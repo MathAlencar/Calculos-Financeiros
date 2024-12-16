@@ -482,7 +482,7 @@ def calculando_emprestimo_final(vlr_imovel, vlr_solicitado, juros, num_parcelas,
                 
         # infos_IOF(num_parcelas, dados_amortizacao, dados_datas, juros)
     else:
-        saldo_inicial = calculando_financiamento_carencia_primeiro_valor(vlr_imovel, vlr_solicitado, 0, carencia)
+        saldo_inicial = calculando_financiamento_carencia_primeiro_valor(vlr_imovel, vlr_solicitado, 0, carencia, juros)
 
         valor_variavel = saldo_inicial
         saldo_calculado_com_juros = 0
@@ -496,6 +496,8 @@ def calculando_emprestimo_final(vlr_imovel, vlr_solicitado, juros, num_parcelas,
             calculo_iof_carencia = calculando_iof_carencia(saldo_calculado_com_juros, valor_variavel, juros, num_parcelas, carencia)
 
             valor_variavel = saldo_inicial + calculo_iof_carencia
+
+        print(f'IOF com carência PRICE: {calculo_iof_carencia}')
 
         saldo_devedor_operacao = calculo_iof_carencia + saldo_inicial
 
@@ -952,7 +954,7 @@ juros = 1.09
 num_parcelas = 180
 carencia = 3
 
-tipo_amortizacao = 'SAC'
+tipo_amortizacao = 'PRICE'
 
 if tipo_amortizacao == 'SAC':
         dados_retorno = calculando_emprestimo_final_SAC(vlr_imovel, vlr_solicitado, juros, num_parcelas, carencia)
