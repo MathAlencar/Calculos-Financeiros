@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stylePage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <title>Simulação</title>
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <form class="content-main-block" id="formularioValores">
+            <nav id="gerar-simulacao">
+                Gerar Simulação
+            </nav>
+            <nav class="content-inside-main-block">
+                <div class="box-01">Amortização:</div>
+                <div class="box-02-carencia">
+                    <div class="custom-select">
+                        <select id="select-option" name="select-option" style="display: none;">
+                            <option value="Amortização">Amortização</option>
+                            <option value="SAC">SAC</option>
+                            <option value="PRICE">PRICE</option>
+                        </select>
+                        <button class="select-button">
+                            <span>Amortização</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <ul class="select-dropdown">
+                            <li data-value="Amortização">Amortização</li>
+                            <li data-value="SAC">SAC</li>
+                            <li data-value="PRICE">PRICE</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="content-inside-main-block">
+                <div class="box-01">Carência:</div>
+                <div class="box-02-carencia">
+                    <div class="input-box-carencia">
+                        <div>
+                            <input class="form-control-carencia" min="1" max="3" value="1" type="number" id="nmr_carencia" placeholder="3" name="nmr_carencia" required>
+                        </div>
+                        <div class="text-input-info">Meses</div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="content-inside-main-block">
+                <div class="box-01">Valor imóvel:</div>
+                <div class="box-02-money">
+                    <div class="input-box-money">
+                        <div class="text-input-info-money">R$</div>
+                        <div>
+                            <input class="form-control-money" maxlength="22" type="text" id="vlr_imovel" name="vlr_imovel" required placeholder="R$ 0.00">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="content-inside-main-block">
+                <div class="box-01">Valor crédito:</div>
+                <div class="box-02-money">
+                    <div class="input-box-money">
+                        <div class="text-input-info-money">R$</div>
+                        <div>
+                            <input class="form-control-money" type="text" id="vlr_solicitado" name="vlr_solicitado" required placeholder="R$ 0.00" maxlength="22">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="content-inside-main-block">
+                <div class="box-01">Quantidade de Parcelas:</div>
+                <div class="box-02-money">
+                    <div class="input-box-money">
+                        <div class="text-input-info-money">QTD</div>
+                        <div>
+                            <input class="form-control-money" type="number" id="nmr_parcelas" placeholder="180" name="nmr_parcelas" max="180" required maxlength="22">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="content-inside-main-block">
+                <div class="box-01">Taxa de Juros:</div>
+                <div class="box-02-money">
+                    <div class="input-box-money">
+                        <div class="text-input-info-money">%</div>
+                        <div>
+                            <input class="form-control-money" type="number" id="juros" name="juros" placeholder="0,00" required oninput="formatando_juros()" maxlength="22">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="btn-enviar">
+                <button id="calculando" class="btn-page">Gerar simulação</button>
+            </nav>
+        </form>
+        <nav class="content-main-table">
+            <nav class="garantia_imovel">
+                <p>Crédito com Garantia de Imóvel</p>
+                <button id="new_simulation" class="btn-page btn-page-red">Realizar nova simulação</button>
+            </nav>
+           <nav class="info-loan">
+            <div class="content-infos">
+                <h6>Valor Líquido do crédito:</h6>
+                <p id="Valor_do_credito"> R$ 0.00 </p>
+            </div>
+            <div class="content-infos">
+                <h6>Valor Total do empréstimo:</h6>
+                <p id="valor_liberado"> R$ 0.00 </p>
+            </div>
+            <div class="content-infos">
+                <h6>prazo</h6>
+                <p id="prazo"> 0 meses | carência : 0 meses </p>
+            </div>
+            <div class="content-infos">
+                <h6>Valor do Imóvel:</h6>
+                <p id="Valor_garantia">R$ 0.00</p>
+            </div>
+            <div class="content-infos">
+                <h6>Taxa de juros:</h6>
+                <p id="infos_juros"> 0.00% </p>
+            </div>
+            <div class="content-infos">
+                <h6>CET:</h6>
+                <p id="CET">0.00%</p>
+            </div>
+            <div class="content-infos">
+                <h6>Indexador:</h6>
+                <p id="IPCA">nada   </p>
+            </div>
+            <div class="content-infos">
+                <h6>Seguro prestamista</h6>
+                <p id="Seguro_prestamista">0.00%</p>
+            </div>
+            <div class="content-infos">
+                <h6>Seguro DFI</h6>
+                <p id="Seguro_DFI">0.00%</p>
+            </div>
+           </nav>
+           <nav style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col"> Parcelas </th>
+                        <th scope="col"> Saldo Devedor </th>
+                        <th scope="col"> Juros </th>
+                        <th scope="col"> Amortização </th>
+                        <th scope="col"> Parcela </th>
+                        <th scope="col"> Seguros taxa </th>
+                        <th scope="col"> parcela final </th>
+                    </tr>
+                </thead>
+                <tbody id="table_infos">
+                    
+                </tbody>
+            </table>
+           </nav>
+        </nav>
+    </main>
+    <footer>
+    </footer>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const selectButton = document.querySelector('.select-button');
+            const selectDropdown = document.querySelector('.select-dropdown');
+            const selectOptions = document.querySelectorAll('.select-dropdown li');
+            const hiddenSelect = document.querySelector('#select-option');
+            const selectButtonSpan = selectButton.querySelector('span');
+
+            selectButton.addEventListener('click', function() {
+                selectDropdown.classList.toggle('open');
+                selectButton.querySelector('.arrow').style.transform = selectDropdown.classList.contains('open') ? 'rotate(180deg)' : '';
+            });
+
+            selectOptions.forEach(function(option) {
+                option.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    selectButtonSpan.textContent = this.textContent;
+                    hiddenSelect.value = value;
+                    selectDropdown.classList.remove('open');
+                    selectButton.querySelector('.arrow').style.transform = '';
+                
+                });
+            });
+
+            document.addEventListener('click', function(event){
+            if (!selectButton.contains(event.target) && !selectDropdown.contains(event.target)){
+                    selectDropdown.classList.remove('open');
+                    selectButton.querySelector('.arrow').style.transform = '';
+            }
+            })
+        });
+    </script>
+    <script src="./front-end.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+</body>
+</html>

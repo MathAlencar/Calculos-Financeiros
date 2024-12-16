@@ -1,0 +1,465 @@
+
+:root{
+    --padding-main: 5rem 10rem 5rem 10rem;
+    --area-column-inside-main-block: 15% 1fr;
+    --area-row-inside-main-block: none;
+    --padding-div-inside-main-bloc: 2rem;
+    --input-box-area-column: 90% 10%;
+    --block-info-loan: 16px
+    --block-info-loan-row: auto auto auto;
+    --p-infos: 15px;
+    --h-infos: 20px;
+    --color-libra: #039;
+    --garantia-imovel-column: 80% 1fr;
+}
+
+/* Codigo CSS do simulador */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Lato", serif;
+    font-weight: 900;
+}
+
+body{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 7% auto 5%;
+    grid-template-columns: 30% 1fr;
+    grid-template-areas: 
+    'header header'
+    'main main'
+    'footer footer';
+}
+
+body header:nth-child(1){
+    grid-area: header;
+    background-color: var(--color-libra);
+}
+
+body main:nth-child(2){
+    grid-area: main;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+}
+
+body footer:nth-child(3){
+    grid-area: footer;
+    background-color: var(--color-libra);
+}
+
+header{
+    width: 100%;
+    font-size: 1.3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    text-align: center;
+    background-color: #1abc9c;
+    padding: 0.7rem;
+}
+
+
+
+
+main{
+    width: 100%;
+    font-size: 1.3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(12, 12, 12);
+    background-color: #1abc9c;
+    padding: var(--padding-main);
+}
+
+main .content-main-block{
+    width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: auto;
+    gap: 5px;
+    grid-template-rows: repeat(auto, 8);
+    box-shadow: 0px 0px 20px rgb(110, 110, 110);
+    /* display: none;   */
+}
+
+#gerar-simulacao{
+    padding: 1rem;
+    border-bottom: 1px solid #8a8a8ab4;
+    color: #575757;
+}
+
+.content-inside-main-block{
+    font-size: 16px;
+    display: grid;
+    grid-template-columns: var(--area-column-inside-main-block);
+    grid-template-rows: var(--area-row-inside-main-block);
+    max-height: 120px;
+}
+
+.box-01{
+    padding: var(--padding-div-inside-main-bloc);
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.box-02-carencia{
+    padding: 1.5rem;
+}
+
+.input-box-carencia{
+    display: grid;
+    grid-template-columns: var(--input-box-area-column);
+}
+
+.text-input-info{
+    color: #495057;
+    background-color: #e9ecef;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0 .25rem .25rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.form-control-carencia{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem 0 0 .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
+.box-02-money{
+    padding: 1.5rem;
+}
+
+.text-input-info-money{
+    color: #495057;
+    background-color: #e9ecef;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem 0 0 .25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.input-box-money{
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.form-control-money{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0 .25rem .25rem 0;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-enviar{
+    padding: 1rem;
+}
+
+
+footer{
+    width: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem;
+    background-color: var(--color-libra);
+    text-align: center;
+    padding: 0.7rem;
+}
+
+
+/* Codigo CSS da tabela */
+
+
+main .content-main-table{
+    width: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: auto;
+    gap: 10px;
+    grid-template-rows: var(--block-info-loan-row);
+    font-size: var(--block-info-loan);
+    box-shadow: 0px 0px 20px rgb(110, 110, 110);
+    display: none;
+}
+
+.garantia_imovel{
+    background-color: var(--color-libra);
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: .25rem;
+    display: grid;
+    grid-template-columns: var(--garantia-imovel-column);
+}
+
+.garantia_imovel p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-loan{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(auto, 9);
+    gap: 5px;
+    background-color: #f1f1f1;
+    border-radius: .25rem;
+}
+
+.content-infos{
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+h6{
+    font-weight: 900;
+    font-size: var(--h-infos);
+}
+
+.content-infos p{
+    padding: .25rem;
+    font-weight: 400;
+    font-size: var(--p-infos);
+}
+
+ /* Estilo da tabela */
+ table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Para bordas arredondadas */
+}
+
+th, td {
+    width: 20px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+th {
+    background-color: var(--color-libra);
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Linhas alternadas */
+}
+
+tr:hover {
+    background-color: #f1f8ff; /* Destaque ao passar o mouse */
+}
+
+td {
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+#ipca{
+    color: #003bfe;
+}
+
+
+
+/* CHAT-GPT */
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
+
+.select-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 220px;
+    padding: 14px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+    color: #444;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.select-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.select-button:focus {
+  outline: none; /* Remove o contorno padrão ao focar */
+    box-shadow: 0 0 8px rgba(108, 178, 235, 0.5); /* Sombra de foco suave */
+     background: linear-gradient(to bottom, #fff, #f0f0f0); /* Gradiente suave ao focar */
+}
+
+
+
+.select-button .arrow {
+    font-size: 14px;
+    color: #777;
+    transition: transform 0.2s ease;
+
+}
+
+.select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 4px;
+    padding: 5px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    list-style: none;
+    display: none; /* Oculto inicialmente */
+}
+
+.select-dropdown li {
+    padding: 10px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #333;
+}
+
+.select-dropdown li:hover {
+    background-color: #f0f0f0;
+}
+
+.select-dropdown.open {
+    display: block; /* Exibe a lista quando a classe open é adicionada */
+}
+
+
+.btn-page {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff; /* Cor do texto */
+    background: linear-gradient(to right, var(--color-libra), var(--color-libra)); /* Gradiente de fundo */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    position: relative;
+    overflow: hidden; /* Garante que a animação fique contida */
+
+}
+
+.btn-page-red{
+    padding: 10px 20px;
+    background: linear-gradient(to right, var(--color-libra), #201dfc); /* Gradiente de fundo */
+}
+
+.btn-page:hover {
+    transform: translateY(-2px); /* Efeito de leve elevação */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25); /* Sombra mais forte no hover */
+}
+
+.btn-page:focus {
+  outline: none; /* Remove o contorno padrão ao focar */
+  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.3) !important;
+}
+
+.btn-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Fora do botão inicialmente */
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Efeito de brilho */
+    transition: left 0.4s ease;
+    transform: skewX(-45deg); /* Deixa o brilho inclinado */
+}
+
+.btn-page:hover::before {
+    left: 150%; /* Move o brilho para dentro do botão */
+}
+
+.btn-page:active {
+  transform: translateY(0px);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2)
+}
+
+@media (max-width: 600px) {
+   
+    :root{
+        --padding-main: 1rem 1rem 1rem 1rem;
+        --area-column-inside-main-block: none;
+        --area-row-inside-main-block: 30% 1fr;
+        --padding-div-inside-main-bloc: 1rem;
+        --input-box-area-column: 80% 20%;
+        --block-info-loan: 10px;
+        --block-info-loan-row: auto auto auto;
+        --p-infos: 10px;
+        --h-infos: 12px;
+        --garantia-imovel-column: 50% 1fr;
+    }
+}
