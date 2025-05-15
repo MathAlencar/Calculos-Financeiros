@@ -1,23 +1,20 @@
+Funcionalidades Principais
+Cálculo detalhado do cronograma de pagamento com base nos parâmetros informados (valor, prazo, taxa de juros, tipo de sistema).
+
+Geração de tabelas de amortização mês a mês.
+
+Exportação de dados em formatos estruturados (CSV, JSON).
+
+API construída com Flask, possibilitando fácil integração com sistemas web ou aplicações frontend.
+
+Suporte a requisições cross-origin com Flask-CORS.
+
 Principais Bibliotecas Utilizadas
-Flask, Flask-CORS – Para criação da API e suporte a requisições cross-origin.
 
-pandas, openpyxl – Para manipulação e exportação de dados em planilhas Excel.
-apscheduler – Para agendamento de tarefas automáticas.
-tempfile, os, csv, io.StringIO – Para manipulação de arquivos temporários e entrada/saída de dados.
-Módulos personalizados de leitura (leitor_pdf_<banco>) – Análise semântica e extração automatizada de dados de PDFs bancários.
-
-O sistema possui leitores personalizados para extrair dados de PDFs emitidos por:
-
-Banco do Brasil
-Santander
-Bradesco
-Itaú
-Mercado Pago
-PicPay
-Sisprime
-Inter
-Sicredi
-C6 Bank
-Sicoob
-Next
-Sofisa
+Flask – Framework para criação da API RESTful.
+Flask-CORS – Suporte a CORS para integrações com aplicações externas.
+pandas – Manipulação e organização de dados em tabelas.
+numpy_financial – Realização de cálculos financeiros como PMT (prestação fixa), juros compostos, entre outros.
+csv – Exportação dos dados em arquivos tabulares.
+dateutil.relativedelta – Cálculo preciso de datas em intervalos mensais.
+math – Cálculos matemáticos adicionais para apoio aos algoritmos.
